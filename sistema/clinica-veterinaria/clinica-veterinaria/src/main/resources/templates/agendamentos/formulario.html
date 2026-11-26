@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Novo Agendamento</title>
+</head>
+<body>
+
+<h1>Novo Agendamento</h1>
+
+<a th:href="@{/agendamentos}">Voltar para agendamentos</a>
+
+<form th:action="@{/agendamentos/salvar}" method="post">
+
+    <br><br>
+
+    <label>Data:</label>
+    <input type="date" name="dataAgendamento" required>
+
+    <br><br>
+
+    <label>Horário:</label>
+    <input type="time" name="horario" required>
+
+    <br><br>
+
+    <label>Motivo:</label>
+    <input type="text" name="motivo" required>
+
+    <br><br>
+
+    <label>Status:</label>
+    <select name="status" required>
+        <option value="AGENDADO">Agendado</option>
+        <option value="CONFIRMADO">Confirmado</option>
+        <option value="CANCELADO">Cancelado</option>
+    </select>
+
+    <br><br>
+
+    <label>Pet:</label>
+    <select name="petId" required>
+        <option value="">Selecione um pet</option>
+
+        <option th:each="pet : ${pets}"
+                th:value="${pet.id}"
+                th:text="${pet.nome}">
+        </option>
+    </select>
+
+    <br><br>
+
+    <button type="submit">Salvar agendamento</button>
+
+</form>
+
+</body>
+</html>

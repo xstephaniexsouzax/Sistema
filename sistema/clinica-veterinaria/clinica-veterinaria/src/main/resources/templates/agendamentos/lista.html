@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Agendamentos</title>
+</head>
+<body>
+
+<h1>Agendamentos</h1>
+
+<a href="/agendamentos/novo">Novo agendamento</a>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>Data</th>
+        <th>Horário</th>
+        <th>Tutor</th>
+        <th>Pet</th>
+        <th>Motivo</th>
+        <th>Status</th>
+        <th>Atualizar data</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="agendamento : ${agendamentos}">
+        <td th:text="${agendamento.dataAgendamento}"></td>
+        <td th:text="${agendamento.horario}"></td>
+        <td th:text="${agendamento.pet.tutor.nome}"></td>
+        <td th:text="${agendamento.pet.nome}"></td>
+        <td th:text="${agendamento.motivo}"></td>
+        <td th:text="${agendamento.status}"></td>
+
+        <td>
+            <form th:action="@{/agendamentos/atualizar/{id}(id=${agendamento.id})}"
+                  method="post">
+                <input type="date" name="novaData" required>
+                <button type="submit">Atualizar</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

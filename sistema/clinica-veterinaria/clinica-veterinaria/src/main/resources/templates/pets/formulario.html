@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastrar Pet</title>
+</head>
+<body>
+
+<h1>Cadastrar Pet</h1>
+
+<a th:href="@{/pets}">Voltar para lista de pets</a>
+
+<form th:action="@{/pets/salvar}" method="post">
+
+    <label>Nome:</label>
+    <input type="text" name="nome" required>
+
+    <br><br>
+
+    <label>Espécie:</label>
+    <input type="text" name="especie">
+
+    <br><br>
+
+    <label>Raça:</label>
+    <input type="text" name="raca">
+
+    <br><br>
+
+    <label>Sexo:</label>
+    <input type="text" name="sexo">
+
+    <br><br>
+
+    <label>Data de nascimento:</label>
+    <input type="date" name="dataNascimento">
+
+    <br><br>
+
+    <label>Tutor:</label>
+    <select name="tutorId" required>
+        <option value="">Selecione um tutor</option>
+
+        <option th:each="tutor : ${tutores}"
+                th:value="${tutor.id}"
+                th:text="${tutor.nome}">
+        </option>
+    </select>
+
+    <br><br>
+
+    <button type="submit">Salvar Pet</button>
+
+</form>
+
+</body>
+</html>

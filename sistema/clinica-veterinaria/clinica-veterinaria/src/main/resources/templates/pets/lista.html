@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Gerenciamento de Pets</title>
+</head>
+<body>
+
+<h1>Gerenciamento de Pets</h1>
+
+<a th:href="@{/}">Voltar ao início</a>
+<br><br>
+
+<a th:href="@{/pets/novo}">Cadastrar Pet</a>
+
+<br><br>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>Nome</th>
+        <th>Espécie</th>
+        <th>Raça</th>
+        <th>Sexo</th>
+        <th>Tutor</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="pet : ${pets}">
+        <td th:text="${pet.nome}"></td>
+        <td th:text="${pet.especie}"></td>
+        <td th:text="${pet.raca}"></td>
+        <td th:text="${pet.sexo}"></td>
+        <td th:text="${pet.tutor.nome}"></td>
+    </tr>
+
+    <tr th:if="${#lists.isEmpty(pets)}">
+        <td colspan="5">Nenhum pet cadastrado.</td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

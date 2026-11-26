@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Tutor</title>
+</head>
+<body>
+
+<h1>Editar Tutor</h1>
+
+<form th:action="@{/tutores/atualizar/{id}(id=${tutor.id})}"
+      method="post">
+
+    <label>Nome:</label>
+    <input type="text" name="nome"
+           th:value="${tutor.nome}" required>
+
+    <label>Telefone:</label>
+    <input type="text" name="telefone"
+           th:value="${tutor.telefone}">
+
+    <label>Email:</label>
+    <input type="email" name="email"
+           th:value="${tutor.email}">
+
+    <label>Endereço:</label>
+    <input type="text" name="endereco"
+           th:value="${tutor.endereco}">
+
+    <button type="submit">Atualizar</button>
+
+</form>
+
+<a href="/tutores">Voltar</a>
+
+</body>
+</html>

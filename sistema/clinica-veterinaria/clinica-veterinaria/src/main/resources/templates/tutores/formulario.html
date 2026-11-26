@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastrar Tutor</title>
+</head>
+<body>
+
+<h1>Cadastrar Tutor</h1>
+
+<form action="/tutores/salvar" method="post">
+
+    <label>Nome:</label>
+    <input type="text" name="nome" required>
+
+    <label>CPF:</label>
+    <input type="text" name="cpf" required>
+
+    <label>Telefone:</label>
+    <input type="text" name="telefone">
+
+    <label>Email:</label>
+    <input type="email" name="email">
+
+    <label>Endereço:</label>
+    <input type="text" name="endereco">
+
+    <button type="submit">Salvar</button>
+
+</form>
+
+<a href="/tutores">Voltar</a>
+
+</body>
+</html>

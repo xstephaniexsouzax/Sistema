@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Gerenciamento de Tutores</title>
+</head>
+<body>
+
+<h1>Gerenciamento de Tutores</h1>
+
+<a th:href="@{/}">Voltar ao início</a>
+<br><br>
+
+<a th:href="@{/tutores/novo}">Cadastrar Tutor</a>
+
+<h2>Pesquisar tutores</h2>
+
+<form th:action="@{/tutores}" method="get">
+    <input
+            type="text"
+            name="busca"
+            placeholder="Digite nome, telefone ou e-mail"
+            th:value="${busca}">
+
+    <button type="submit">Pesquisar</button>
+    <a th:href="@{/tutores}">Limpar pesquisa</a>
+</form>
+
+<br>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Telefone</th>
+        <th>E-mail</th>
+        <th>Ações</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="tutor : ${tutores}">
+        <td th:text="${tutor.id}"></td>
+        <td th:text="${tutor.nome}"></td>
+        <td th:text="${tutor.telefone}"></td>
+        <td th:text="${tutor.email}"></td>
+        <td>
+            <a th:href="@{/tutores/editar/{id}(id=${tutor.id})}">
+                Editar
+            </a>
+        </td>
+    </tr>
+
+    <tr th:if="${#lists.isEmpty(tutores)}">
+        <td colspan="5">Nenhum tutor encontrado.</td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
